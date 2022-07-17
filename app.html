@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <title>Meine App</title>
+
+    <style>
+        body {
+            background: black;
+            color: white;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+        }
+
+        img {
+            width: 50%;
+        }
+
+        #my-video {
+            background: green;
+            max-height: 200px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <img src="logo.png" alt="Mein Logo">
+
+    <h1>Meine App</h1>
+    <p>Hier steht noch mehr zu meiner App</p>
+
+
+    <video id="my-video">Video stream not available.</video>
+    <br>
+    <br>
+    <button id="my-button">Klick</button>
+
+</body>
+
+<script>
+
+
+    document.getElementById('my-button').onclick = function () {
+        var myVideoStream = document.getElementById('my-video');
+        navigator.getMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+        navigator.getMedia({ video: true, audio: false },
+            function (stream) {
+                myVideoStream.srcObject = stream
+                myVideoStream.play();
+            },
+            function (error) {
+                alert('webcam not working');
+            });
+    }
+
+</script>
+
+
+</html>
